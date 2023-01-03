@@ -1,5 +1,8 @@
 #!/usr/bin/pthon3
-"""defines an empty rectagle"""
+
+"""Defines an empty rectagle"""
+
+
 class Rectangle:
-	"""empty class"""
+    """Empty class"""
 	pass
