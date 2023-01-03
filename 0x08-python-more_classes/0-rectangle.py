@@ -1,14 +1,23 @@
 #!/usr/bin/python3
 
-"""
-Defines an empty rectagle
+
 
 """
+
+empty class Rectangle
+
+"""
+
+
+
 
 
 class Rectangle:
-	"""
-	Empty class
 
-	"""
-	pass
+    """
+
+    Rectangle empty class
+
+    """
+
+    pass
