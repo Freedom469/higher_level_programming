@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-python3 -m py_compile $PYFILE
+#!/bin/bash
+python3 -m compileall -b $PYFILE
