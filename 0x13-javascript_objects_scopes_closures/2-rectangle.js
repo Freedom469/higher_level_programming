@@ -1,10 +1,12 @@
 #!/usr/bin/node
 
-module.exports = class Rectangle {
+class Rectangle {
   constractor (w, h) {
-    if ((!isNaN(w) && w > 0) && (!isNaN(h) && h > 0)) {
+    if ((w > 0) && (h > 0)) {
       this.width = w;
       this.height = h;
     }
   }
 };
+
+module.exports = Rectangle;
