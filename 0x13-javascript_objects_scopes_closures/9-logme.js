@@ -1,10 +1,9 @@
 #!/usr/bin/node
 
-exports.logMe = function (item){
+exports.logMe = function (item) {
+  let count = 0;
 
-	let count = 0;
+  console.log(count + ':' + ' ' + item);
 
-	console.log(count + ':' + ' ' + item);
-
-	count++;
+  count++;
 };
