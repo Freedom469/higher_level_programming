@@ -7,38 +7,27 @@ if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
-    try:
-        connection = MySQLdb.connect(
+    connection = MySQLdb.connect(
                                         host="localhost",
                                         user=argv[1],
                                         password=argv[2],
                                         database=argv[3]
 
-                                    )
-        if connection:
+                                )
 
-            query = "SELECT * FROM cities ORDER BY id ASC"
+    query = "SELECT cities.id,cities.name, states.name FROM cities \
+    JOIN states ON \
+    cities.state_id=states.id  ORDER BY cities.id ASC"
 
-            cursor = connection.cursor()
+    cursor = connection.cursor()
 
-            cursor.execute(query)
+    cursor.execute(query)
 
-            results = cursor.fetchall()
+    results = cursor.fetchall()
 
-            if results:
+    for result in results:
 
-                for result in results:
+        print(result)
 
-                    print(result)
-
-            else:
-
-                print("No match found")
-
-    except MySQLdb.Error as e:
-
-        print("Connection Failed", e)
-
-    finally:
-        cursor.close()
-        connection.close()
+    cursor.close()
+    connection.close()
