@@ -14,15 +14,11 @@ if __name__ == "__main__":
                     port=3306,
                     user=argv[1],
                     password=argv[2],
-                    database=argv[3],
-                    charset='utf8'
+                    database=argv[3]
 
                     )
-    except MySQLdb.Error:
-        print("Connection failed")
-        sys.exit(1)
-    cursor = connect.cursor()
-    try:
+
+        cursor = connect.cursor()
         cursor.execute("""SELECT * FROM states WHERE name
                         LIKE "N%" ORDER BY id ASC""")
         results = cursor.fetchall()
