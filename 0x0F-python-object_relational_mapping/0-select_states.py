@@ -5,17 +5,16 @@ if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
-    connect = MySQLdb.connect(
+    try:
+        connect = MySQLdb.connect(
 
-                host="localhost",
-                port=3306,
-                user=argv[1],
-                password=argv[2],
-                database=argv[3]
+                    host="localhost",
+                    port=3306,
+                    user=argv[1],
+                    password=argv[2],
+                    database=argv[3]
 
-                )
-
-    if (connect):
+                    )
 
         cursor = connect.cursor()
 
@@ -27,5 +26,11 @@ if __name__ == "__main__":
 
             print(result)
 
-    cursor.close()
-    connect.close()
+    except MySQLdb.Error:
+
+        print('Operation Failed')
+
+    finally:
+
+        cursor.close()
+        connect.close()
