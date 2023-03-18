@@ -22,6 +22,7 @@ if __name__ == "__main__":
     except MySQLdb.Error:
 
         print("Connection failed")
+        sys.exit(1)
 
     cursor = connect.cursor()
 
@@ -44,6 +45,7 @@ if __name__ == "__main__":
 
     except MySQLdb.Error:
         print("Connection failed")
+        sys.exit(1)
 
     finally:
         cursor.close()
