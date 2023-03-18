@@ -25,7 +25,7 @@ if __name__ == "__main__":
     try:
 
         cursor.execute("""SELECT * FROM states WHERE name
-                        LIKE "N%" ORDER BY id""")
+                        LIKE "N%" ORDER BY id ASC""")
 
         results = cursor.fetchall()
 
