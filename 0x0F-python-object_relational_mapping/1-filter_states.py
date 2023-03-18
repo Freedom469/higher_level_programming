@@ -8,17 +8,22 @@ if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
-    connect = MySQLdb.connect(
-                host="localhost",
-                user=argv[1],
-                password=argv[2],
-                database=argv[3]
+    try:
+        connect = MySQLdb.connect(
+                    host="localhost",
+                    user=argv[1],
+                    password=argv[2],
+                    database=argv[3]
 
-                )
+                    )
 
-    if (connect):
+    except MySQLdb.Error:
+        print("Connection failed")
 
-        cursor = connect.cursor()
+    cursor = connect.cursor()
+
+    try:
+
         cursor.execute("""SELECT * FROM states WHERE name
                         LIKE "N%" ORDER BY id""")
 
@@ -33,8 +38,10 @@ if __name__ == "__main__":
         else:
 
             print("No match Found")
-    else:
+
+    except MySQLdb.Error:
         print("Connection failed")
 
-    cursor.close()
-    connect.close()
+    finally:
+        cursor.close()
+        connect.close()
