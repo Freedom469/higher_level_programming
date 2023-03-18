@@ -21,7 +21,7 @@ if __name__ == "__main__":
         searched = sys.argv[4]
         cursor = connect.cursor()
 
-        cursor.execute("SELECT * FROM states WHERE BINARY name='{}'\
+        cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
         ORDER BY id".format(searched))
 
         results = cursor.fetchall()
