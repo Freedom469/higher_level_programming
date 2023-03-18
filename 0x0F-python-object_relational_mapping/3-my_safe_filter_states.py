@@ -16,30 +16,19 @@ if __name__ == "__main__":
                                     database=argv[3]
 
                                     )
-    if connection:
 
-        cursor = connection.cursor()
-        searched = argv[4]
+    cursor = connection.cursor()
+    searched = argv[4]
 
-        query = "SELECT * FROM states WHERE BINARY name=%s ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE BINARY name=%s ORDER BY id ASC"
 
-        cursor.execute(query, (searched,))
+    cursor.execute(query, (searched,))
 
-        results = cursor.fetchall()
+    results = cursor.fetchall()
 
-        if results:
+    for result in results:
 
-            for result in results:
-
-                print(result)
-
-        else:
-
-            print("No match found")
-
-    else:
-
-        print("connection failed")
+        print(result)
 
     cursor.close()
     connection.close()
