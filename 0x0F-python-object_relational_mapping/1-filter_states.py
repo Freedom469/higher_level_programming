@@ -8,7 +8,6 @@ from sys import argv
 
 if __name__ == "__main__":
 
-    try:
         connect = MySQLdb.connect(
                     host="localhost",
                     port=3306,
@@ -22,14 +21,8 @@ if __name__ == "__main__":
         cursor.execute("""SELECT * FROM states WHERE name
                         LIKE "N%" ORDER BY id ASC""")
         results = cursor.fetchall()
-        if results:
-            for result in results:
+        for result in results:
                 print(result)
-        else:
-            print("No match Found")
-    except MySQLdb.Error:
-        print("Connection failed")
-        sys.exit(1)
-    finally:
+        
         cursor.close()
         connect.close()
