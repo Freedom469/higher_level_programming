@@ -9,10 +9,10 @@ if __name__ == "__main__":
 
     try:
         connection = MySQLdb.connect(
-                                    host="localhost",
-                                    user=argv[1],
-                                    password=argv[2],
-                                    database=argv[3]
+                                        host="localhost",
+                                        user=argv[1],
+                                        password=argv[2],
+                                        database=argv[3]
 
                                     )
         if connection:
