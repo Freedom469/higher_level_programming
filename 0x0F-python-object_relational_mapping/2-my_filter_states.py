@@ -16,29 +16,18 @@ if __name__ == "__main__":
                                 database=sys.argv[3]
 
                                 )
-    if connect:
 
-        searched = sys.argv[4]
-        cursor = connect.cursor()
+    searched = sys.argv[4]
+    cursor = connect.cursor()
 
-        cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
-        ORDER BY id".format(searched))
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
+            ORDER BY id".format(searched))
 
-        results = cursor.fetchall()
+    results = cursor.fetchall()
 
-        if results:
+    for result in results:
 
-            for result in results:
-
-                print(result)
-
-        else:
-
-            print("No match found")
-
-    else:
-
-        print("Connection failed")
+        print(result)
 
     cursor.close()
     connect.close()
