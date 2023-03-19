@@ -16,7 +16,7 @@ if __name__ == "__main__":
                                 )
 
     query = "SELECT cities.name FROM cities\
-            JOIN states ON cities.id = states.id\
+            JOIN states ON cities.state_id = states.id\
             WHERE BINARY  states.name = '{}'\
             ORDER BY cities.id".format(argv[4])
 
