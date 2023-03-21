@@ -8,27 +8,29 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-username = argv[1]
-password = argv[2]
-database = argv[3]
+if __name__ == "__main__":
 
-engine = create_engine(f"mysql://{username}:{password}"
-                       f"@localhost:3306/{database}")
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
+
+    engine = create_engine(f"mysql://{username}:{password}"
+                           f"@localhost:3306/{database}")
 
 
-Session = sessionmaker(bind=engine)
+    Session = sessionmaker(bind=engine)
 
-session = Session()
+    session = Session()
 
-query = session.query(State).order_by(State.id)
+    query = session.query(State).order_by(State.id)
 
-first = query.first()
+    first = query.first()
 
-if not first:
-    print("Nothing")
+    if not first:
+        print("Nothing")
 
-else:
+    else:
 
-    print(f'{first.id}: {first.name}')
+        print(f'{first.id}: {first.name}')
 
-session.close()
+    session.close()
