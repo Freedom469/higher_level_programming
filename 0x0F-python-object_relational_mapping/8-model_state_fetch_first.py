@@ -30,3 +30,5 @@ if not first:
 else:
 
     print(f'{first.id}: {first.name}')
+
+session.close()
