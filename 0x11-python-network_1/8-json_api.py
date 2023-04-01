@@ -1,27 +1,23 @@
-#!/usr/bin/python3
-"""
-Python script that sends a POST request to the URL and
-to an URL with the letter as a parameter
-"""
-import requests
-import sys
 
+#!/usr/bin/python3
+""" accessing json object """
+
+import requests
+from sys import argv
 
 if __name__ == "__main__":
-    data = {'q': ""}
-
     try:
-        data['q'] = sys.argv[1]
-    except:
-        pass
-
-    r = requests.post('http://0.0.0.0:5000/search_user', data)
-
-    try:
-        json_o = r.json()
-        if not json_o:
-            print("No result")
+        data = argv[1]
+    except IndexError:
+        data = ""
+    url = 'http://0.0.0.0:5000/search_user'
+    response = requests.post(url, {'q': data})
+    header = response.headers['Content-Type']
+    if header == 'application/json':
+        my_dict = response.json()
+        if my_dict:
+            print(f'[{my_dict["id"]}] {my_dict["name"]}')
         else:
-            print("[{}] {}".format(json_o.get('id'), json_o.get('name')))
-    except:
+            print("No result")
+    else:
         print("Not a valid JSON")
