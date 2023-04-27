@@ -4,20 +4,18 @@ const request = require('request');
 const fs = require('fs');
 
 const url = process.argv[2];
-const filePath = process.argv[3];
+const filename = process.argv[3];
 
-request.get(url, (error, response, body) => {
-  if (error) {
-    console.error(error);
+request(url, function (err, res, body) {
+  if (err) {
+    console.log(err);
     return;
   }
 
-  fs.writeFile(filePath, body, 'utf-8', (err) => {
+  fs.writeFile(filename, body, 'utf8', function (err) {
     if (err) {
-      console.error(err);
-      return;
+      console.log(err);
     }
-
-    console.log(`Contents of ${url} saved to ${filePath}`);
   });
 });
+
